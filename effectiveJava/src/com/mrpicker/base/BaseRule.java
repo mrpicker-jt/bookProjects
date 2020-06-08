@@ -10,10 +10,15 @@ import java.util.List;
  * @create: 2020-06-08 13:17
  **/
 public class BaseRule {
+    protected String info;
     //优点
     protected List<String> benefits = new ArrayList<>();
     //缺点
     protected List<String> weakPoints = new ArrayList<>();
+
+    public BaseRule(String info) {
+        this.info = info;
+    }
 
     public void addBenefit(String benifit) {
         benefits.add(benifit);
@@ -26,7 +31,8 @@ public class BaseRule {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("--------------" + getClass().getSimpleName() + "--------------\n");
+        stringBuilder.append("--------------").append(getClass().getSimpleName()).append("--------------\n");
+        stringBuilder.append(String.format("Info: %s", info)).append("\n\n");
         for (int i = 0; i < benefits.size(); i++) {
             stringBuilder.append(String.format("Benefit%d: ", i + 1)).append(benefits.get(i)).append("\n");
         }

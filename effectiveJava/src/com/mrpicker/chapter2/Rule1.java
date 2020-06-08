@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 public class Rule1 extends BaseRule {
 
     public Rule1() {
+        super("用静态工厂方法代替构造器");
         addBenefit("静态工厂方法与构造器不同的第一大优势在于，它们有名称,可以更准确的描述被返回的对象");
         addBenefit("第二大优势在于，不必在每次调用它们的时候都返回一个新对象。对象可以被缓存起来");
         addBenefit("第三大优势在于，它可以返回原返回类型的任何子类型的对象。这样我们在选择返回对象的类上就有了更大的灵活性");
@@ -27,6 +28,10 @@ public class Rule1 extends BaseRule {
 
 
     public static void main(String[] args) {
+        System.out.println(new Rule1());
+    }
+
+    private static void example(){
         //for b1
         BigInteger.probablePrime(3, new Random());
         //for b2
@@ -87,7 +92,6 @@ public class Rule1 extends BaseRule {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(new Rule1());
     }
 
     enum Test {
