@@ -15,9 +15,23 @@ public class BaseRule {
     protected List<String> benefits = new ArrayList<>();
     //缺点
     protected List<String> weakPoints = new ArrayList<>();
+    //总结
+    protected String summary;
+
+    public BaseRule() {
+
+    }
 
     public BaseRule(String info) {
         this.info = info;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public void addBenefit(String benifit) {
@@ -38,6 +52,9 @@ public class BaseRule {
         }
         for (int i = 0; i < weakPoints.size(); i++) {
             stringBuilder.append(String.format("WeakPoint%d: ", i + 1)).append(weakPoints.get(i)).append("\n");
+        }
+        if (summary != null) {
+            stringBuilder.append(String.format("总结：%s\n", summary));
         }
         stringBuilder.append("\n");
         return stringBuilder.toString();
