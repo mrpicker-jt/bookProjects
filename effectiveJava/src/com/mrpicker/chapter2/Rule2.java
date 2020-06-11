@@ -25,7 +25,7 @@ public class Rule2 extends BaseRule {
     }
 }
 
-class example1 {
+class example2_1 {
     public static void main(String[] args) {
         Nutrition nutrition = new Nutrition.Builder(1540).fat(10).carbon(61.3).build();
         System.out.println(nutrition);
@@ -97,7 +97,7 @@ class example1 {
     }
 }
 
-class example2 {
+class example2_2 {
 
     public static void main(String[] args) {
         NYPizza nyPizza = new NYPizza.Builder(NYPizza.SIZE.BIG).addTopping(Pizza.TOPPING.HAM).addTopping(Pizza.TOPPING.MUSHROOM)
