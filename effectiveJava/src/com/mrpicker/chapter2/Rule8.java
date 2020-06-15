@@ -30,7 +30,7 @@ public class Rule8 extends BaseRule {
     }
 }
 
-class example {
+class example8_1 {
     public static void main(String[] args) {
         try (Room room = new Room(88);) {
             System.out.println("GoodBye");
