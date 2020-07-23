@@ -10,15 +10,15 @@ import java.util.List;
  * @create: 2020-06-08 13:17
  **/
 public class BaseRule {
-    protected String info;
+    private String info;
     //关键点
-    protected List<String> keyPoints = new ArrayList<>();
+    private List<String> keyPoints = new ArrayList<>();
     //优点
-    protected List<String> benefits = new ArrayList<>();
+    private List<String> benefits = new ArrayList<>();
     //缺点
-    protected List<String> weakPoints = new ArrayList<>();
+    private List<String> weakPoints = new ArrayList<>();
     //总结
-    protected String summary;
+    private String summary;
 
     public BaseRule() {
 
@@ -28,19 +28,15 @@ public class BaseRule {
         this.info = info;
     }
 
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
+    protected void setSummary(String summary) {
         this.summary = summary;
     }
 
-    public void addBenefit(String benifit) {
+    protected void addBenefit(String benifit) {
         benefits.add(benifit);
     }
 
-    public void addWeakPoint(String weakPoint) {
+    protected void addWeakPoint(String weakPoint) {
         weakPoints.add(weakPoint);
     }
 
