@@ -18,8 +18,8 @@ public class Ex31 {
 	}
 
 	public static void main(String[] args) {
-		int N = Integer.parseInt(args[0]);
-		double p = Double.parseDouble(args[1]);
+		int N = Integer.parseInt("5");
+		double p = Double.parseDouble("1");
 		if (p < 0 || p > 1) {
 			System.out.println("p is not valid!");
 			return;

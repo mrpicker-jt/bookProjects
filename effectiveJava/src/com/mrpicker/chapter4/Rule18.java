@@ -17,6 +17,8 @@ public class Rule18 extends BaseRule {
     public Rule18() {
         super("复合优先于继承");
         addKeyPoint("与方法调用不同的是，继承打破了封装性");
+        addKeyPoint("对于两个类A,B 只有当两者之间确实存在‘is-a’的关系时，B才应该继承A");
+        addKeyPoint("复合不适用于回调框架，即存在所谓的Self问题");
     }
 
 

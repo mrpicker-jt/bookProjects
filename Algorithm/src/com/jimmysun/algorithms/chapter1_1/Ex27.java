@@ -41,7 +41,7 @@ public class Ex27 {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("result: " + binomial(100, 50, 0.25) + ", count: " + COUNT);
-		System.out.println("result: " + betterBinomial(100, 50, 0.25) + ", count: " + COUNT2);
+//		System.out.println("result: " + binomial(10, 5, 0.25) + ", count: " + COUNT);
+		System.out.println("result: " + betterBinomial(10, 5, 0.25) + ", count: " + COUNT2);
 	}
 }

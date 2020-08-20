@@ -10,9 +10,9 @@ public class Ex12 {
 			a[i] = a[a[i]];
 		}
 		// I don't understand why the author asks this
-		for (int i = 0; i < 10; i++) {
-			System.out.println(i);
-		}
+//		for (int i = 0; i < 10; i++) {
+//			System.out.println(i);
+//		}
 		// I think the author should ask this
 		for (int i = 0; i < 10; i++) {
 			System.out.println(a[i]);
