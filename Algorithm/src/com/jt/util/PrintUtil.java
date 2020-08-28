@@ -12,8 +12,7 @@ public class PrintUtil {
     public static void printIntArray(int[] array) {
         StdOut.println();
         for (Integer anArray : array) {
-            StdOut.print(anArray);
-            StdOut.print(" ");
+            StdOut.printf("%10d",anArray);
         }
     }
 
@@ -27,7 +26,7 @@ public class PrintUtil {
     public static void printDoubleArray(double[] array) {
         StdOut.println();
         for (double d:array){
-            StdOut.printf("%10.2f",d);
+            StdOut.printf("%10.3f",d);
         }
     }
 
