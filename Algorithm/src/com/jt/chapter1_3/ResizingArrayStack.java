@@ -56,6 +56,15 @@ public class ResizingArrayStack<T> implements Iterable<T>, Stack<T> {
         }
     }
 
+    @Override
+    public T peek() {
+        if (!isEmpty()) {
+            return items[N - 1];
+        } else {
+            throw new RuntimeException("stack is empty");
+        }
+    }
+
     public boolean isEmpty() {
         return N == 0;
     }

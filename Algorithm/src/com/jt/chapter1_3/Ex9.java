@@ -5,23 +5,19 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * @program: Algorithm
- * @description: Dijkstra双栈求值
+ * @description:
  * @author: Mrpicker
- * @create: 2020-09-08 14:33
+ * @create: 2020-09-10 15:15
  **/
-public class Evaluate {
-
+public class Ex9 {
     public static void main(String[] args) {
-        String expression = "sqrt 1 ) + 2 ) * 3 - 4 ) * 5 - 6 ) ) )";
-        evaluate(expression.split(" "));
+        String expression = "1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )";
+        completeBrackets(expression.split(" "));
     }
 
-
-
-
-    public static void evaluate(String[] expressions) {
+    private static void completeBrackets(String[] expressions) {
         Stack<String> operatores = new Stack<>();
-        Stack<Double> nums = new Stack<>();
+        Stack<String> numStrs = new Stack<>();
 
         for (String c : expressions) {
             switch (c) {
@@ -37,31 +33,25 @@ public class Evaluate {
                 case ")":
                     if (!operatores.isEmpty()) {
                         String pop = operatores.pop();
-                        double v = nums.pop();
+                        String numStr = numStrs.pop();
                         switch (pop) {
                             case "+":
-                                v = nums.pop() + v;
-                                break;
                             case "-":
-                                v = nums.pop() - v;
-                                break;
                             case "*":
-                                v = nums.pop() * v;
-                                break;
                             case "/":
-                                v = nums.pop() / v;
+                                numStr = "(" + numStrs.pop() + pop + numStr + ")";
                                 break;
                             case "sqrt":
-                                v = Math.sqrt(v);
+                                numStr = pop + "(" + numStr + ")";
                                 break;
                         }
-                        nums.push(v);
+                        numStrs.push(numStr);
                     }
                     break;
                 default:
-                    nums.push(Double.valueOf(c));
+                    numStrs.push(c);
             }
         }
-        StdOut.printf("result:%8f", nums.peek());
+        StdOut.printf("result:%s", numStrs.peek());
     }
 }

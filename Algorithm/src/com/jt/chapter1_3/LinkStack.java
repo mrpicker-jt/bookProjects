@@ -39,6 +39,14 @@ public class LinkStack<T> implements Iterable<T>, Stack<T> {
     }
 
     @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        return first.item;
+    }
+
+    @Override
     public void push(T item) {
         Node<T> node = new Node<>();
         node.item = item;
