@@ -15,7 +15,7 @@ public class Ex9 {
         completeBrackets(expression.split(" "));
     }
 
-    private static void completeBrackets(String[] expressions) {
+    public static void completeBrackets(String[] expressions) {
         Stack<String> operatores = new Stack<>();
         Stack<String> numStrs = new Stack<>();
 
@@ -52,6 +52,6 @@ public class Ex9 {
                     numStrs.push(c);
             }
         }
-        StdOut.printf("result:%s", numStrs.peek());
+        StdOut.printf("result:%s\n", numStrs.peek());
     }
 }
