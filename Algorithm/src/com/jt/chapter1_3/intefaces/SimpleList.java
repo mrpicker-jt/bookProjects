@@ -14,4 +14,6 @@ public interface SimpleList<T> {
     boolean remove(T t);
 
     T get(int index);
+
+    int indexOf(T t);
 }

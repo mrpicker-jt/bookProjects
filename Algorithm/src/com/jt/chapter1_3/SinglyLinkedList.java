@@ -129,6 +129,12 @@ public class SinglyLinkedList<T> implements SimpleList<T> {
         size--;
     }
 
+    /**
+     * remove first element equals t
+     *
+     * @param t
+     * @return
+     */
     @Override
     public boolean remove(T t) {
         if (!isEmpty()) {
@@ -152,6 +158,11 @@ public class SinglyLinkedList<T> implements SimpleList<T> {
         return false;
     }
 
+    /**
+     * remove all elements equals t
+     *
+     * @param t
+     */
     public void removeAll(T t) {
         if (!isEmpty()) {
             Node<T> before = first;
@@ -184,6 +195,28 @@ public class SinglyLinkedList<T> implements SimpleList<T> {
             cur = cur.next;
         }
         return cur.item;
+    }
+
+    /**
+     * find the first index of t，return -1 if not exists
+     *
+     * @param t
+     * @return
+     */
+    @Override
+    public int indexOf(T t) {
+        if (!isEmpty()) {
+            Node<T> cur = first;
+            int index = 0;
+            while (cur != null) {
+                if (cur.item.equals(t)) {
+                    return index;
+                }
+                cur = cur.next;
+                index++;
+            }
+        }
+        return -1;
     }
 
     @Override
