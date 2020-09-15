@@ -1,9 +1,14 @@
 package com.jt.chapter1_1;
 
+import edu.princeton.cs.algs4.StdOut;
+
+import java.io.File;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        System.out.println(Other.gcd(124,64));
+        File file = new File("data");
+        StdOut.println(file.getAbsolutePath());
+        StdOut.println(file.isDirectory());
     }
 }

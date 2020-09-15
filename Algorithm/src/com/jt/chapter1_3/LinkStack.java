@@ -17,6 +17,20 @@ public class LinkStack<T> implements Iterable<T>, Stack<T> {
     private Node<T> first;
     private int N;
 
+    public LinkStack() {
+
+    }
+
+    public LinkStack(LinkStack<T> stack) {
+        LinkStack<T> tempStack = new LinkStack<>();
+        for (T t : stack) {
+            tempStack.push(t);
+        }
+        for (T t : tempStack) {
+            push(t);
+        }
+    }
+
     public static void main(String[] args) {
         LinkStack<Integer> stack = new LinkStack<>();
         for (int i = 0; i < 20; i++) {
@@ -82,5 +96,14 @@ public class LinkStack<T> implements Iterable<T>, Stack<T> {
                 return prev.item;
             }
         };
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (T t : this) {
+            stringBuilder.append(t.toString() + " ");
+        }
+        return stringBuilder.toString();
     }
 }
