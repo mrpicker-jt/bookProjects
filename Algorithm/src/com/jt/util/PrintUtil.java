@@ -12,7 +12,7 @@ public class PrintUtil {
     public static void printIntArray(int[] array) {
         StdOut.println();
         for (Integer anArray : array) {
-            StdOut.printf("%10d",anArray);
+            StdOut.printf("%5d",anArray);
         }
     }
 

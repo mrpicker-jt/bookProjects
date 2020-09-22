@@ -21,17 +21,20 @@ import java.util.stream.IntStream;
  **/
 public class ThreeSumFast {
     public static void main(String[] args) throws IOException {
-        File file = new File("data" + File.separator + "2Kints.txt");
+        File file = new File("data" + File.separator + "8Kints.txt");
         Path path = Paths.get(file.getAbsolutePath());
         List<Integer> nums = Files.readAllLines(path).stream().map(String::trim).map(Integer::valueOf).collect(Collectors.toList());
         int[] numArray = new int[nums.size()];
         IntStream.range(0, nums.size()).forEach(i -> numArray[i] = nums.get(i));
+        Arrays.sort(numArray);
         StdOut.println(count(numArray));
+        StdOut.println(Ex15.fasterSum3(numArray));
+        StdOut.println(TwoSumFast.count(numArray));
+        StdOut.println(Ex15.fasterSum2(numArray, 0));
     }
 
     public static int count(int[] a) {
         StopWatch stopWatch = new StopWatch();
-        Arrays.sort(a);
         int N = a.length;
         int count = 0;
         for (int i = 0; i < N; i++) {
@@ -41,7 +44,7 @@ public class ThreeSumFast {
                 }
             }
         }
-        StdOut.printf("ThreeSum cost: %.3fs\n", stopWatch.elapseTime() / 1000f);
+        StdOut.printf("ThreeSum cost: %.5fs\n", stopWatch.elapseTime() / 1000f);
         return count;
     }
 }

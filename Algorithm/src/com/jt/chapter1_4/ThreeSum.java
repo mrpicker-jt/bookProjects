@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  **/
 public class ThreeSum {
     public static void main(String[] args) throws IOException {
-        File file = new File("data" + File.separator + "2Kints.txt");
+        File file = new File("data" + File.separator + "8Kints.txt");
         Path path = Paths.get(file.getAbsolutePath());
         List<Integer> nums = Files.readAllLines(path).stream().map(String::trim).map(Integer::valueOf).collect(Collectors.toList());
         StdOut.println(count(nums));

@@ -26,11 +26,16 @@ public class TwoSumFast {
         List<Integer> nums = Files.readAllLines(path).stream().map(String::trim).map(Integer::valueOf).collect(Collectors.toList());
         int[] numArray = new int[nums.size()];
         IntStream.range(0, nums.size()).forEach(i -> numArray[i] = nums.get(i));
-        StdOut.println(count(numArray));
+        int[] doubleArr = new int[numArray.length * 2];
+        for (int i = 0; i < doubleArr.length; i++) {
+            doubleArr[i] = numArray[i % numArray.length];
+        }
+        Arrays.sort(doubleArr);
+        StdOut.println(count(doubleArr));
+        StdOut.println(Ex15.fasterSum2(doubleArr, 0));
     }
 
     public static int count(int[] a) {
-        Arrays.sort(a);
         StopWatch stopWatch = new StopWatch();
         int N = a.length;
         int count = 0;
@@ -39,7 +44,7 @@ public class TwoSumFast {
                 count++;
             }
         }
-        StdOut.printf("TwoSum cost: %.3fs\n", stopWatch.elapseTime() / 1000f);
+        StdOut.printf("TwoSum cost: %.5fs\n", stopWatch.elapseTime() / 1000f);
         return count;
     }
 }
