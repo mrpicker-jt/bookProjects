@@ -4,12 +4,26 @@
 
     <application
         android:allowBackup="true"
+        android:name=".MyApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidArtExplore">
-        <activity android:name=".chapter1.SecondActivity"></activity>
+        <activity
+            android:name=".chapter2.NewProcessActivity"
+            android:process=":remote" />
+        <activity
+            android:name=".chapter2.NewProcess2Activity"
+            android:process="com.jt.chapter2.remote" />
+        <activity
+            android:name=".chapter1.SecondActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.jt.test" />
+        <activity
+            android:name=".chapter1.ThirdActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.jt.test" />
         <activity android:name=".chapter1.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

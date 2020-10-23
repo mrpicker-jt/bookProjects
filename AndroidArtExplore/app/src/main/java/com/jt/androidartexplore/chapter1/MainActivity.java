@@ -1,16 +1,23 @@
 package com.jt.androidartexplore.chapter1;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.jt.androidartexplore.BaseActivity;
 import com.jt.androidartexplore.R;
+import com.jt.androidartexplore.chapter2.NewProcessActivity;
+import com.jt.androidartexplore.chapter2.vo.User;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class MainActivity extends BaseActivity {
 
@@ -19,12 +26,33 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_main);
+        ValueAnimator valueAnimator = ObjectAnimator.ofFloat(null);
+        AnimatorSet animatorSet=new AnimatorSet();
+        Object target;
+        ObjectAnimator objectAnimator=ObjectAnimator.ofFloat(null, "alpha", 0);
     }
 
     public void jumpSecond(View view) {
         startActivity(new Intent(this, SecondActivity.class));
     }
 
+    public void jumpNewProcess(View view) throws IOException {
+        Intent intent=new Intent();
+        storeUserBySerial();
+        startActivity(new Intent(this, NewProcessActivity.class));
+    }
+
+    private void storeUserBySerial() throws IOException {
+        //序列化User
+        User user = new User(1, "jt", true);
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(getFilePath("cache.txt")));
+        outputStream.writeObject(user);
+        outputStream.close();
+    }
+
+    public void jumpThird(View view) {
+        startActivity(new Intent(this, ThirdActivity.class));
+    }
 
     @Override
     protected void onNewIntent(Intent intent) {

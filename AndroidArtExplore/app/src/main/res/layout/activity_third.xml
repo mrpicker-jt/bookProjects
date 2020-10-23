@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chapter1.SecondActivity">
+    tools:context=".chapter1.ThirdActivity">
 
     <Button
         android:id="@+id/button2"
@@ -23,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="go to third"
-        android:onClick="jumpThird"
+        android:text="go to second"
+        android:onClick="jumpSecond"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
@@ -35,9 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
-        android:text="Second"
+        android:text="Third"
         android:textColor="@color/purple_700"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

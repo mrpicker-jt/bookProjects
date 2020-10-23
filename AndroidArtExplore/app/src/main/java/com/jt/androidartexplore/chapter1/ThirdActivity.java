@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import com.jt.androidartexplore.BaseActivity;
 import com.jt.androidartexplore.R;
 
-public class SecondActivity extends BaseActivity {
+public class ThirdActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_third);
     }
 
     public void jumpMain(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
 
-    public void jumpThird(View view) {
-        startActivity(new Intent(this, ThirdActivity.class));
+    public void jumpSecond(View view) {
+        startActivity(new Intent(this, SecondActivity.class));
     }
 
     @Override
