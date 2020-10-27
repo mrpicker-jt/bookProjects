@@ -9,6 +9,14 @@ import edu.princeton.cs.algs4.StdOut;
  * @create: 2020-08-19 13:52
  **/
 public class PrintUtil {
+
+    public static <T> void printArray(T[] array){
+        StdOut.println();
+        for (T anArray : array) {
+            StdOut.printf("%5d",anArray);
+        }
+    }
+
     public static void printIntArray(int[] array) {
         StdOut.println();
         for (Integer anArray : array) {

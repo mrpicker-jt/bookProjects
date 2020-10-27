@@ -1,4 +1,4 @@
-package com.jt.androidartexplore.chapter2.vo.aidl;
+package com.jt.androidartexplore;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -17,8 +17,12 @@ public class Book implements Parcelable {
     };
     public String name;
     public int bookId;
+    public Book(String name, int bookId) {
+        this.name = name;
+        this.bookId = bookId;
+    }
 
-    protected Book(Parcel in) {
+    public Book(Parcel in) {
         name = in.readString();
         bookId = in.readInt();
     }
@@ -27,6 +31,19 @@ public class Book implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeInt(bookId);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name='" + name + '\'' +
+                ", bookId=" + bookId +
+                '}';
+    }
+
+    public void readFromParcel(Parcel dest) {
+        name = dest.readString();
+        bookId = dest.readInt();
     }
 
     @Override

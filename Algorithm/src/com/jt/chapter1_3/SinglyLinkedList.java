@@ -56,6 +56,10 @@ public class SinglyLinkedList<T> implements SimpleList<T> {
         StdOut.println(linkedList);
     }
 
+    public Node<T> getFirst(){
+        return first;
+    }
+
     @Override
     public int size() {
         return size;

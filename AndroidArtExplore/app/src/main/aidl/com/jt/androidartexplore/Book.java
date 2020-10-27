@@ -15,12 +15,14 @@ public class Book implements Parcelable {
             return new Book[size];
         }
     };
+
+    public Book(String name, int bookId) {
+        this.name = name;
+        this.bookId = bookId;
+    }
+
     public String name;
     public int bookId;
-
-    public Book(){
-
-    }
 
     public Book(Parcel in) {
         name = in.readString();
@@ -31,6 +33,11 @@ public class Book implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeInt(bookId);
+    }
+
+    public void readFromParcel(Parcel dest) {
+        name = dest.readString();
+        bookId = dest.readInt();
     }
 
     @Override
