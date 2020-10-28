@@ -2,6 +2,8 @@
 package com.jt.androidartexplore;
 
 import com.jt.androidartexplore.Book;
+
+import com.jt.androidartexplore.OnBookArrivedListener;
 // Declare any non-default types here with import statements
 
 interface BookController {
@@ -12,4 +14,7 @@ interface BookController {
     List<Book> getBookList();
 
     void addBookInOut(inout Book book);
+
+    void registerListener(OnBookArrivedListener listener);
+    void unRegisterListener(OnBookArrivedListener listener);
 }
