@@ -1,5 +1,6 @@
 package com.jt.chapter1_3;
 
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class TreeNode<T> {
         IntStream.range(0, 20).mapToObj(i -> "item" + i).forEach(linkedList::add);
         TreeNode<String> root = generateTree(linkedList.getFirst());
         printTreePrefixRecurse(root);
+        StdOut.println();
+        printTreePrefix(root);
 
     }
 
@@ -79,7 +82,18 @@ public class TreeNode<T> {
     }
 
     public static <T> void printTreePrefix(TreeNode<T> root) {
-        
+        Stack<TreeNode<T>> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode<T> treeNode = stack.pop();
+            StdOut.print(treeNode.item.toString() + " ");
+            if (treeNode.right != null) {
+                stack.push(treeNode.right);
+            }
+            if (treeNode.left != null) {
+                stack.push(treeNode.left);
+            }
+        }
     }
 
 }

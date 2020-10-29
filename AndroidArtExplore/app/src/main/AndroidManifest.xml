@@ -3,13 +3,24 @@
     package="com.jt.androidartexplore">
 
     <application
-        android:allowBackup="true"
         android:name=".MyApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidArtExplore">
+        <service
+            android:name=".chapter2.binder_pool.BinderPoolService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.jt.androidartexplore.binderpool" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".chapter2.NewProcessActivity"
             android:process=":remote" />
@@ -31,21 +42,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".chapter2.AIDLBookService"
+
+        <service
+            android:name=".chapter2.AIDLBookService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.jt.androidartexplore.action"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.jt.androidartexplore.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-
-        <service android:name=".chapter2.MessengerService"
+        <service
+            android:name=".chapter2.MessengerService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.jt.androidartexplore.messageaction"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.jt.androidartexplore.messageaction" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
     </application>
