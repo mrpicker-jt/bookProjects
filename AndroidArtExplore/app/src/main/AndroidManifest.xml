@@ -10,6 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidArtExplore">
+        <activity android:name=".chapter3.ViewTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".chapter2.binder_pool.BinderPoolService"
             android:enabled="true"
@@ -36,11 +44,11 @@
             android:launchMode="singleTask"
             android:taskAffinity="com.jt.test" />
         <activity android:name=".chapter1.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
 
         <service

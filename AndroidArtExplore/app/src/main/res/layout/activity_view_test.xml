@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chapter3.ViewTestActivity">
+
+    <com.jt.androidartexplore.chapter3.MovableTextView
+        android:id="@+id/avt_mTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Hello World"
+        android:textColor="@color/purple_700"
+        android:textSize="50sp" />
+
+    <EditText
+        android:id="@+id/avt_editTextPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_below="@+id/avt_editTextPhone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:onClick="scrollMTVTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scroll To" />
+</RelativeLayout>
