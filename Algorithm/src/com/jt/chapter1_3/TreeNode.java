@@ -1,5 +1,6 @@
 package com.jt.chapter1_3;
 
+import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -29,11 +30,77 @@ public class TreeNode<T> {
         SinglyLinkedList<String> linkedList = new SinglyLinkedList<>();
         IntStream.range(0, 20).mapToObj(i -> "item" + i).forEach(linkedList::add);
         TreeNode<String> root = generateTree(linkedList.getFirst());
-        printTreePrefixRecurse(root);
+        printTreePostFixRecurse(root);
         StdOut.println();
-        printTreePrefix(root);
-
+        post(root);
+        StdOut.println();
+        levelTravel(root);
     }
+
+    private static <T> void pre(TreeNode<T> root) {
+        Stack<TreeNode<T>> stack = new Stack<>();
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                printNode(root);
+                stack.push(root);
+                root = root.left;
+            } else {
+                root = stack.pop().right;
+            }
+        }
+    }
+
+    private static <T> void mid(TreeNode<T> root) {
+        Stack<TreeNode<T>> stack = new Stack<>();
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                TreeNode<T> pop = stack.pop();
+                printNode(pop);
+                root = pop.right;
+            }
+        }
+    }
+
+
+    private static <T> void post(TreeNode<T> root) {
+        Stack<TreeNode<T>> stack = new Stack<>();
+        Stack<TreeNode<T>> output = new Stack<>();
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                stack.push(root);
+                output.push(root);
+                root = root.right;
+            } else {
+                TreeNode<T> pop = stack.pop();
+                root = pop.left;
+            }
+        }
+        while (!output.isEmpty()) {
+            printNode(output.pop());
+        }
+    }
+
+    private static <T> void levelTravel(TreeNode<T> root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode<T>> queue = new Queue<>();
+        queue.enqueue(root);
+        while (!queue.isEmpty()){
+            TreeNode<T> dequeue = queue.dequeue();
+            printNode(dequeue);
+            if (dequeue.left!=null){
+                queue.enqueue(dequeue.left);
+            }
+            if (dequeue.right!=null){
+                queue.enqueue(dequeue.right);
+            }
+        }
+    }
+
 
     public static <T> TreeNode<T> generateTree(Node<T> first) {
         if (first == null) {
@@ -83,17 +150,107 @@ public class TreeNode<T> {
 
     public static <T> void printTreePrefix(TreeNode<T> root) {
         Stack<TreeNode<T>> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode<T> treeNode = stack.pop();
-            StdOut.print(treeNode.item.toString() + " ");
-            if (treeNode.right != null) {
-                stack.push(treeNode.right);
-            }
-            if (treeNode.left != null) {
-                stack.push(treeNode.left);
+
+        // 步骤1：直到当前结点为空 & 栈空时，循环结束
+        while (root != null || stack.size() > 0) {
+
+            // 步骤2：判断当前结点是否为空
+            // a. 若不为空，执行3
+            // b. 若为空，执行5
+            if (root != null) {
+
+                // 步骤3：输出当前节点，并将其入栈
+                printNode(root);
+                stack.push(root);
+                // 步骤4：置当前结点的左孩子为当前节点
+                // 返回步骤1
+                root = root.left;
+
+            } else {
+
+                // 步骤5：出栈栈顶结点
+                root = stack.pop();
+                // 步骤6：置当前结点的右孩子为当前节点
+                root = root.right;
+                // 返回步骤1
             }
         }
     }
+
+
+    public static <T> void printTreeMidFixRecurse(TreeNode<T> root) {
+        if (root == null) {
+            return;
+        }
+        printTreeMidFixRecurse(root.left);
+        StdOut.print(root.item.toString() + " ");
+        printTreeMidFixRecurse(root.right);
+    }
+
+    public static <T> void printTreeMidFix(TreeNode<T> root) {
+        Stack<TreeNode<T>> stack = new Stack<>();
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                root = stack.pop();
+                printNode(root);
+                root = root.right;
+            }
+        }
+    }
+
+    public static <T> void printTreePostFixRecurse(TreeNode<T> root) {
+        if (root == null) {
+            return;
+        }
+        printTreePostFixRecurse(root.left);
+        printTreePostFixRecurse(root.right);
+        StdOut.print(root.item.toString() + " ");
+    }
+
+    public static <T> void printTreePostFix(TreeNode<T> root) {
+        Stack<TreeNode<T>> stack = new Stack<>();
+        Stack<TreeNode<T>> output = new Stack<>();
+
+        // 步骤1：直到当前结点为空 & 栈空时，循环结束——> 步骤8
+        while (root != null || stack.size() > 0) {
+
+            // 步骤2：判断当前结点是否为空
+            // a. 若不为空，执行3、4
+            // b. 若为空，执行5、6
+            if (root != null) {
+
+                // 步骤3：入栈当前结点到中间栈
+                output.push(root);
+
+                // 步骤4：入栈当前结点到普通栈
+                stack.push(root);
+
+                // 步骤4：置当前结点的右孩子为当前节点
+                // 返回步骤1
+                root = root.right;
+
+            } else {
+
+                // 步骤5：出栈栈顶结点
+                root = stack.pop();
+                // 步骤6：置当前结点的右孩子为当前节点
+                root = root.left;
+                // 返回步骤1
+            }
+        }
+
+        // 步骤8：输出中间栈的结点
+        while (output.size() > 0) {
+            printNode(output.pop());
+        }
+    }
+
+    private static <T> void printNode(TreeNode<T> node) {
+        StdOut.print(node.item.toString() + " ");
+    }
+
 
 }
