@@ -1,4 +1,4 @@
-package com.jt.androidartexplore.chapter3;
+package com.jt.androidartexplore.chapter3.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

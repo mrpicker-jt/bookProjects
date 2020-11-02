@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.jt.androidartexplore.R;
+import com.jt.androidartexplore.chapter3.ui.MovableTextView;
 
 public class ViewTestActivity extends AppCompatActivity {
 
