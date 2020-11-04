@@ -35,6 +35,9 @@ public class MyButton extends AppCompatButton {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         boolean b = super.onTouchEvent(ev);
+        if (ev.getAction() != MotionEvent.ACTION_DOWN) {
+            b = false;
+        }
         Log.d(TAG, "onTouchEvent: ev action: " + ev.getAction() + " return: " + b);
         return b;
     }

@@ -9,6 +9,8 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Field;
+
 public class MyFrameLayout extends FrameLayout {
     final String TAG = "View-Test-" + getClass().getSimpleName();
 
@@ -26,6 +28,23 @@ public class MyFrameLayout extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Class<? extends MyFrameLayout> aClass = this.getClass();
+        Field[] declaredFields = aClass.getSuperclass()
+                .getSuperclass().getDeclaredFields();
+        for (int i = 0; i < declaredFields.length; i++) {
+            Field f = declaredFields[i];
+            f.setAccessible(true);
+            if (f.getName().equals("mFirstTouchTarget")) {
+                try {
+                    Log.d(TAG, "dispatchTouchEvent: ev action: " +
+                            ev.getAction() +
+                            " mFirstTouchTarget: " + (f.get(this) == null ? "null" : f.get(this)));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
         boolean b = super.dispatchTouchEvent(ev);
         Log.d(TAG, "dispatchTouchEvent: ev action: " + ev.getAction() + " return: " + b);
         return b;
