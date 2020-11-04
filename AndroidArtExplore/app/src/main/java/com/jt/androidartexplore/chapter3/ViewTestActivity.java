@@ -17,7 +17,7 @@ public class ViewTestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_test);
+        setContentView(R.layout.activity_view_test1);
         movableTextView = findViewById(R.id.avt_mTV);
         editText = findViewById(R.id.avt_editTextPhone);
     }
