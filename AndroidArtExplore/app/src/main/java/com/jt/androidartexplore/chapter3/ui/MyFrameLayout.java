@@ -53,9 +53,6 @@ public class MyFrameLayout extends FrameLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean b = super.onInterceptTouchEvent(ev);
-        if (ev.getAction() == MotionEvent.ACTION_MOVE) {
-            b = true;
-        }
         Log.d(TAG, "onInterceptTouchEvent: ev action: " + ev.getAction() + " return: " + b);
         return b;
     }
