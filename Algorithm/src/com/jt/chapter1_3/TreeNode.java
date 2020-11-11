@@ -32,16 +32,17 @@ public class TreeNode<T> {
         TreeNode<String> root = generateTree(linkedList.getFirst());
         printTreePostFixRecurse(root);
         StdOut.println();
-        post(root);
+        post(root, new ArrayList<>());
         StdOut.println();
         levelTravel(root);
     }
 
-    private static <T> void pre(TreeNode<T> root) {
+    public static <T> void pre(TreeNode<T> root, List<T> list) {
         Stack<TreeNode<T>> stack = new Stack<>();
         while (!stack.isEmpty() || root != null) {
             if (root != null) {
                 printNode(root);
+                list.add(root.item);
                 stack.push(root);
                 root = root.left;
             } else {
@@ -50,7 +51,7 @@ public class TreeNode<T> {
         }
     }
 
-    private static <T> void mid(TreeNode<T> root) {
+    public static <T> void mid(TreeNode<T> root, List<T> list) {
         Stack<TreeNode<T>> stack = new Stack<>();
         while (!stack.isEmpty() || root != null) {
             if (root != null) {
@@ -59,49 +60,56 @@ public class TreeNode<T> {
             } else {
                 TreeNode<T> pop = stack.pop();
                 printNode(pop);
+                list.add(pop.item);
                 root = pop.right;
             }
         }
     }
 
-
-    private static <T> void post(TreeNode<T> root) {
+    public static <T> void post(TreeNode<T> root, List<T> list) {
         Stack<TreeNode<T>> stack = new Stack<>();
         Stack<TreeNode<T>> output = new Stack<>();
-        while (!stack.isEmpty() || root != null) {
+
+
+        while (root != null || stack.size() > 0) {
             if (root != null) {
-                stack.push(root);
                 output.push(root);
+                stack.push(root);
                 root = root.right;
             } else {
-                TreeNode<T> pop = stack.pop();
-                root = pop.left;
+                root = stack.pop().left;
             }
         }
         while (!output.isEmpty()) {
-            printNode(output.pop());
+            TreeNode<T> pop = output.pop();
+            printNode(pop);
+            list.add(pop.item);
         }
     }
 
-    private static <T> void levelTravel(TreeNode<T> root) {
+    public static <T> void levelTravel(TreeNode<T> root) {
         if (root == null) {
             return;
         }
         Queue<TreeNode<T>> queue = new Queue<>();
         queue.enqueue(root);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode<T> dequeue = queue.dequeue();
             printNode(dequeue);
-            if (dequeue.left!=null){
+            if (dequeue.left != null) {
                 queue.enqueue(dequeue.left);
             }
-            if (dequeue.right!=null){
+            if (dequeue.right != null) {
                 queue.enqueue(dequeue.right);
             }
         }
     }
 
-
+    /**
+     * @param first 单链表的头
+     * @param <T>
+     * @return
+     */
     public static <T> TreeNode<T> generateTree(Node<T> first) {
         if (first == null) {
             return null;
@@ -177,7 +185,6 @@ public class TreeNode<T> {
         }
     }
 
-
     public static <T> void printTreeMidFixRecurse(TreeNode<T> root) {
         if (root == null) {
             return;
@@ -250,6 +257,30 @@ public class TreeNode<T> {
 
     private static <T> void printNode(TreeNode<T> node) {
         StdOut.print(node.item.toString() + " ");
+    }
+
+    public T getItem() {
+        return item;
+    }
+
+    public void setItem(T item) {
+        this.item = item;
+    }
+
+    public TreeNode<T> getLeft() {
+        return left;
+    }
+
+    public void setLeft(TreeNode<T> left) {
+        this.left = left;
+    }
+
+    public TreeNode<T> getRight() {
+        return right;
+    }
+
+    public void setRight(TreeNode<T> right) {
+        this.right = right;
     }
 
 
