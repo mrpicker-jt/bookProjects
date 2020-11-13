@@ -24,7 +24,6 @@ public class TwoStackQueue<T> implements Queue<T> {
         TwoStackQueue<String> twoStackQueue = new TwoStackQueue<>();
         twoStackQueue.enQueue("Hi ");
         twoStackQueue.enQueue("I ");
-        twoStackQueue.deQueue();
         twoStackQueue.enQueue("am ");
         twoStackQueue.enQueue("jt");
         while (!twoStackQueue.isEmpty()) {
@@ -34,17 +33,12 @@ public class TwoStackQueue<T> implements Queue<T> {
 
     @Override
     public T deQueue() {
-        //先转置A
-        while (!stackA.isEmpty()) {
-            stackB.push(stackA.pop());
+        if (stackB.isEmpty()) {
+            while (!stackA.isEmpty()) {
+                stackB.push(stackA.pop());
+            }
         }
-        //拿出最头上的那个
-        T pop = stackB.pop();
-        //再转置回来
-        while (!stackB.isEmpty()) {
-            stackA.push(stackB.pop());
-        }
-        return pop;
+        return stackB.pop();
     }
 
     @Override

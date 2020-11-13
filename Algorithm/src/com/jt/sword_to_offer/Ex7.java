@@ -20,7 +20,7 @@ public class Ex7 {
 
     public static void main(String[] args) {
         SinglyLinkedList<Integer> linkedList = new SinglyLinkedList<>();
-        IntStream.range(0, 10).forEach(linkedList::add);
+        IntStream.range(0, 7).forEach(linkedList::add);
         TreeNode<Integer> root = TreeNode.generateTree(linkedList.getFirst());
         List<Integer> preList = new ArrayList<>();
         List<Integer> inList = new ArrayList<>();
@@ -66,7 +66,6 @@ public class Ex7 {
     }
 
 
-    // TODO: 2020/11/11 根据中序和后序重建 
     private static TreeNode<Integer> generateByPostAndIn(List<Integer> postOrder, List<Integer> inOrder) {
         if (postOrder.isEmpty() || inOrder.isEmpty()) {
             return null;
@@ -82,15 +81,15 @@ public class Ex7 {
         if (left > right) {
             return null;
         }
-        if (root < 0) {
-            return null;
-        }
+
         TreeNode<Integer> node = new TreeNode<>();
         node.setItem(postOrder.get(root));
         int i = inMap.get(postOrder.get(root));
-        node.setLeft(recurPost(postOrder, root - (right - i) - 1, i + 1, right));
-        node.setRight(recurPost(postOrder, root - 1, left, i - 1));
+
+
+        node.setRight(recurPost(postOrder, root - 1, i + 1, right));
+        node.setLeft(recurPost(postOrder, root - (right - i) - 1, left, i - 1));
+
         return node;
     }
-
 }

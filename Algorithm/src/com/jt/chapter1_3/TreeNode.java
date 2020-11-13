@@ -15,9 +15,10 @@ import java.util.stream.IntStream;
  * @create: 2020-10-28 19:56
  **/
 public class TreeNode<T> {
-    T item;
-    TreeNode<T> left;//左子节点
-    TreeNode<T> right;//右子节点
+    public T item;
+    public TreeNode<T> left;//左子节点
+    public TreeNode<T> right;//右子节点
+    public TreeNode<T> parent;
 
     public TreeNode(T item) {
         this.item = item;
