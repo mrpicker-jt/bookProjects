@@ -18,7 +18,7 @@ public class Ex30 {
         linkedList.add("you");
         StdOut.println(linkedList);
 
-        Node<String> newNode = reverseLinkedList(firstNode);
+        Node<String> newNode = reverseLinkedListRecur(firstNode);
         SinglyLinkedList<String> newLinkedList = new SinglyLinkedList<>(newNode);
         StdOut.println(newLinkedList);
     }
@@ -38,6 +38,16 @@ public class Ex30 {
         Node<T> newFirst = stack.peek();
         reverseStack(stack);
         return newFirst;
+    }
+
+    public static <T> Node<T> reverseLinkedListRecur(Node<T> node) {
+        if (node.next == null) {
+            return node;
+        }
+        Node<T> p = reverseLinkedListRecur(node.next);
+        node.next.next = node;
+        node.next = null;
+        return p;
     }
 
     private static <T> void reverseStack(Stack<Node<T>> stack) {
